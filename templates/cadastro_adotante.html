@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Cadastrar Adotante</h2>
+    <form method="POST" action="{{ url_for('cadastro_adotante') }}">
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome Completo</label>
+            <input type="text" class="form-control" id="nome" name="nome" required>
+        </div>
+        
+        <div class="mb-3">
+            <label for="email" class="form-label">E-mail</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        
+        <div class="mb-3">
+            <label for="senha" class="form-label">Senha</label>
+            <input type="password" class="form-control" id="senha" name="senha" required>
+        </div>
+        
+        <div class="mb-3">
+            <label for="telefone" class="form-label">Telefone</label>
+            <input type="tel" class="form-control" id="telefone" name="telefone">
+        </div>
+        
+        <div class="mb-3">
+            <label for="tipo_residencia" class="form-label">Tipo de Residência</label>
+            <select class="form-select" id="tipo_residencia" name="tipo_residencia" required>
+                <option value="apartamento">Apartamento</option>
+                <option value="casa sem quintal">Casa sem quintal</option>
+                <option value="casa com quintal">Casa com quintal</option>
+            </select>
+        </div>
+        
+        <div class="mb-3">
+            <label for="tem_criancas" class="form-label">Tem crianças em casa?</label>
+            <select class="form-select" id="tem_criancas" name="tem_criancas">
+                <option value="False">Não</option>
+                <option value="True">Sim</option>
+            </select>
+        </div>
+        
+        <div class="mb-3">
+            <label for="preferencia_especie" class="form-label">Prefere adotar:</label>
+            <select class="form-select" id="preferencia_especie" name="preferencia_especie" required>
+                <option value="cão">Cão</option>
+                <option value="gato">Gato</option>
+                <option value="qualquer">Qualquer</option>
+            </select>
+        </div>
+        
+        <button type="submit" class="btn btn-success">Cadastrar</button>
+    </form>
+</div>
+{% endblock %}

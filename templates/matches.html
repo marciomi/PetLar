@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Animais compatíveis com {{ adotante.nome }}</h2>
+    
+    <div class="card mb-4">
+        <div class="card-header bg-info text-white">
+            <h5>Perfil do Adotante</h5>
+        </div>
+        <div class="card-body">
+            <p><strong>Residência:</strong> {{ adotante.tipo_residencia|capitalize }} ({{ adotante.tamanho_residencia|capitalize }})</p>
+            <p><strong>Experiência:</strong> {{ adotante.experiencia_animais|capitalize }}</p>
+            <p><strong>Crianças:</strong> {{ 'Sim' if adotante.tem_criancas else 'Não' }}</p>
+            <p><strong>Outros animais:</strong> {{ 'Sim' if adotante.tem_outros_animais else 'Não' }}</p>
+            <p><strong>Preferências:</strong> 
+                {{ adotante.preferencia_especie|capitalize }}, 
+                {{ adotante.preferencia_tamanho|capitalize }}, 
+                {{ adotante.preferencia_energia|capitalize }}
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        {% for match in matches %}
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 border-{% if match.compatibilidade >= '80%' %}success{% elif match.compatibilidade >= '50%' %}warning{% else %}danger{% endif %}">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between">
+                        <h5>{{ match.animal.nome }}</h5>
+                        <span class="badge bg-primary rounded-pill">{{ match.compatibilidade }}</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        <strong>Espécie/Raça:</strong> {{ match.animal.especie|capitalize }} ({{ match.animal.raca }})<br>
+                        <strong>Idade:</strong> {{ match.animal.idade }} anos<br>
+                        <strong>Tamanho/Energia:</strong> {{ match.animal.tamanho|capitalize }} / {{ match.animal.energia|capitalize }}
+                    </p>
+                    
+                    <ul class="list-group list-group-flush mb-3">
+                        <li class="list-group-item">
+                            {% if match.animal.sociabilidade_criancas %}
+                            ✅ Compatível com crianças
+                            {% else %}
+                            ❌ Precaução com crianças
+                            {% endif %}
+                        </li>
+                        <li class="list-group-item">
+                            {% if match.animal.sociabilidade_outros_animais %}
+                            ✅ Aceita outros animais
+                            {% else %}
+                            ❌ Prefere ser único
+                            {% endif %}
+                        </li>
+                        {% if match.animal.cuidados_especiais %}
+                        <li class="list-group-item text-danger">
+                            ⚠️ {{ match.animal.cuidados_especiais }}
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="card-footer bg-transparent">
+                    <a href="#" class="btn btn-success">Tenho interesse</a>
+                    <button class="btn btn-outline-secondary float-end">Detalhes</button>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="col-12">
+            <div class="alert alert-warning">Nenhum animal compatível encontrado. Tente ajustar suas preferências.</div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Cadastrar Animal</h2>
+    <form method="POST" action="{{ url_for('cadastro_animal') }}">
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="nome" name="nome" required>
+        </div>
+        
+        <div class="mb-3">
+            <label for="especie" class="form-label">Espécie</label>
+            <select class="form-select" id="especie" name="especie" required>
+                <option value="cão">Cão</option>
+                <option value="gato">Gato</option>
+            </select>
+        </div>
+        
+        <div class="mb-3">
+            <label for="raca" class="form-label">Raça</label>
+            <input type="text" class="form-control" id="raca" name="raca">
+        </div>
+        
+        <div class="mb-3">
+            <label for="idade" class="form-label">Idade (anos)</label>
+            <input type="number" class="form-control" id="idade" name="idade" min="0">
+        </div>
+        
+        <div class="mb-3">
+            <label for="tamanho" class="form-label">Tamanho</label>
+            <select class="form-select" id="tamanho" name="tamanho" required>
+                <option value="pequeno">Pequeno</option>
+                <option value="médio">Médio</option>
+                <option value="grande">Grande</option>
+            </select>
+        </div>
+        
+        <div class="mb-3">
+            <label for="energia" class="form-label">Nível de Energia</label>
+            <select class="form-select" id="energia" name="energia" required>
+                <option value="baixa">Baixa</option>
+                <option value="média">Média</option>
+                <option value="alta">Alta</option>
+            </select>
+        </div>
+        
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="sociabilidade_criancas" name="sociabilidade_criancas">
+            <label class="form-check-label" for="sociabilidade_criancas">Sociável com crianças</label>
+        </div>
+        
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="sociabilidade_outros_animais" name="sociabilidade_outros_animais">
+            <label class="form-check-label" for="sociabilidade_outros_animais">Sociável com outros animais</label>
+        </div>
+        
+        <div class="mb-3">
+            <label for="cuidados_especiais" class="form-label">Cuidados Especiais</label>
+            <textarea class="form-control" id="cuidados_especiais" name="cuidados_especiais" rows="3"></textarea>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </form>
+</div>
+{% endblock %}

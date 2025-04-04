@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Bem-vindo ao PetLar!</h1>
+    <p class="text-center">Encontre seu companheiro animal perfeito.</p>
+    
+    <div class="row mt-4">
+        <div class="col-md-6 text-center">
+            <a href="{{ url_for('cadastro_animal') }}" class="btn btn-primary btn-lg">Cadastrar Animal</a>
+        </div>
+        <div class="col-md-6 text-center">
+            <a href="{{ url_for('cadastro_adotante') }}" class="btn btn-success btn-lg">Cadastrar Adotante</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

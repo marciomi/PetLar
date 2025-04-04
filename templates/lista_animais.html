@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Animais Disponíveis para Adoção</h2>
+    
+    <div class="row">
+        {% for animal in animais %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title">{{ animal.nome }}</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        <strong>Espécie:</strong> {{ animal.especie|capitalize }}<br>
+                        <strong>Raça:</strong> {{ animal.raca or 'Não especificada' }}<br>
+                        <strong>Idade:</strong> {{ animal.idade }} anos<br>
+                        <strong>Tamanho:</strong> {{ animal.tamanho|capitalize }}<br>
+                        <strong>Energia:</strong> {{ animal.energia|capitalize }}
+                    </p>
+                    <ul class="list-group list-group-flush mb-3">
+                        {% if animal.sociabilidade_criancas %}
+                        <li class="list-group-item text-success">✅ Sociável com crianças</li>
+                        {% else %}
+                        <li class="list-group-item text-muted">❌ Precaução com crianças</li>
+                        {% endif %}
+                        
+                        {% if animal.sociabilidade_outros_animais %}
+                        <li class="list-group-item text-success">✅ Convive com outros animais</li>
+                        {% else %}
+                        <li class="list-group-item text-muted">❌ Prefere ser único animal</li>
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ url_for('ver_matches', adotante_id=1) }}" class="btn btn-primary">
+                        Ver Compatibilidade
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="col-12">
+            <div class="alert alert-info">Nenhum animal disponível no momento.</div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

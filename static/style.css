@@ -1,0 +1,93 @@
+/* static/style.css */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+
+.alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+
+/* Estilos para cards de animais */
+.card {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    font-weight: bold;
+}
+
+.list-group-item {
+    padding: 0.5rem 1rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .col-md-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+/* Estilos para a página de matches */
+.card.border-success {
+    border: 2px solid #28a745 !important;
+}
+
+.card.border-warning {
+    border: 2px solid #ffc107 !important;
+}
+
+.card.border-danger {
+    border: 2px solid #dc3545 !important;
+}
+
+.badge.rounded-pill {
+    font-size: 1em;
+}
+
+.list-group-item {
+    padding: 0.75rem 1.25rem;
+}
+
+/* Estilos para o formulário de login */
+.card {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.card-footer {
+    background-color: transparent;
+}
+
+.btn-primary {
+    background-color: #4e73df;
+    border-color: #4e73df;
+}
+
+.btn-primary:hover {
+    background-color: #2e59d9;
+    border-color: #2653d4;
+}
