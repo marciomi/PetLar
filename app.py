@@ -232,7 +232,7 @@ def listar_animais():
 # Inicialização do Banco de Dados
 with app.app_context():
     db.create_all()
-    print("Tabelas verificadas/criadas com sucesso!")
+    print("Tabelas verificadas/ criadas com sucesso!")
 
 if __name__ == '__main__':
     app.run(debug=True)
